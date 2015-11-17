@@ -1,4 +1,4 @@
-/* This function generates QR-Codes for the MI5 Demonstrator and saves them as images
+/* This function generates QR-Codes for the MI5 Demonstrator and saves them as images555555555555555
 
 Parameters:
     ordercount:      Describes the number of QR-Codes to generate. When undefined the generator will generate one code
@@ -18,7 +18,7 @@ generateQRCode = function(ordercount, input) {
     var neworder;
     var neworder_md5;
     var qrinput;
-    var targetdirectory = './QR_Codes/';
+    var targetdirectory = './../QR_Codes/';
     var codename;
     var fullpath;
     var dbentry;
@@ -26,7 +26,7 @@ generateQRCode = function(ordercount, input) {
     for (i = 0; i < ordercount; i++) {
         ID = randomID();
         neworder = "recipe=" + input.recipeId + "&" + "parameters=" + "[" + input.parameters + "]" + "&" + "ID=" + ID;
-        neworder_md5 = md5(neworder);
+        neworder_md5 = md5(neworder);e
         qrinput = "http://mi5.itq.de/orderViaQRcode" + neworder_md5;
         codename = "order" + i + "recipe" + input.recipeId;
         fullpath = targetdirectory + codename;

@@ -4,11 +4,14 @@
   "description": "Generates QR codes for the Cloudlink application of the MI5 demonstrator",
   "main": "generator.js",
   "dependencies": {
+    "bluebird": "^3.0.5",
     "events": "^1.1.0",
     "md5": "^2.0.0",
+    "path": "^0.12.7",
     "qr": "^0.2.4",
     "random-id": "^0.0.2",
     "request": "^2.65.0",
+    "url-join": "0.0.1",
     "util": "^0.10.3"
   },
   "devDependencies": {},

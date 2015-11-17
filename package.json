@@ -6,8 +6,9 @@
   "dependencies": {
     "events": "^1.1.0",
     "md5": "^2.0.0",
-    "random-id": "^0.0.2",
     "qr": "^0.2.4",
+    "random-id": "^0.0.2",
+    "request": "^2.65.0",
     "util": "^0.10.3"
   },
   "devDependencies": {},

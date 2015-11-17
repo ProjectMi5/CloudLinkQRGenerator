@@ -12,7 +12,7 @@ function rest(){}
 
 rest.prototype.validateVoucher = function(dbentry){
   var options = {
-    url:  urljoin(config.rest.host, config.rest.getOrdersByStatus),
+    url:  urljoin(config.rest.host, config.rest.validateVoucher),
     rejectUnauthorized: false, // TODO certificate needs to be bundled correctly
     form: {voucher: JSON.stringify(dbentry)},
     auth: config.auth

@@ -9,6 +9,8 @@ var md5 = require('md5');
 var randomID = require("random-id");
 var encoder = new Encoder;
 
+var config = require('./../config.js');
+
 var rest = require('./rest');
 
 generateQRCode = function(ordercount, input) {
@@ -18,7 +20,7 @@ generateQRCode = function(ordercount, input) {
     var neworder;
     var neworder_md5;
     var qrinput;
-    var targetdirectory = './../QR_Codes/';
+    var targetdirectory = config.qr.target;
     var codename;
     var fullpath;
     var dbentry;
@@ -26,8 +28,8 @@ generateQRCode = function(ordercount, input) {
     for (i = 0; i < ordercount; i++) {
         ID = randomID();
         neworder = "recipe=" + input.recipeId + "&" + "parameters=" + "[" + input.parameters + "]" + "&" + "ID=" + ID;
-        neworder_md5 = md5(neworder);e
-        qrinput = "http://mi5.itq.de/orderViaQRcode" + neworder_md5;
+        neworder_md5 = md5(neworder);
+        qrinput = config.qr.url + neworder_md5;
         codename = "order" + i + "recipe" + input.recipeId;
         fullpath = targetdirectory + codename;
         dbentry = {
@@ -46,12 +48,5 @@ generateQRCode = function(ordercount, input) {
         }
 
     }
-
-    encoder.on('end', function(){
-        console.log('ende');
-    });
-    encoder.on('err', function(err){
-        console.log('err', err);
-    });
 };
-generateQRCode(12, {"recipeId":10051,"parameters":[40, 100, 80, 20]});
+module.exports = generateQRCode;

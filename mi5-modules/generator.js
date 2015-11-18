@@ -33,11 +33,11 @@ generateQRCode = function(ordercount, input) {
         codename = "order" + i + "recipe" + input.recipeId;
         fullpath = targetdirectory + codename;
         dbentry = {
-            ID: ID,
+            identifier: neworder_md5,
             recipe: input.recipeId,
             parameters: input.parameters,
             valid: true,
-            voucher: neworder_md5
+            humanReadable: ID
         };
 
         rest.validateVoucher(dbentry);

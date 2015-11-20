@@ -23,6 +23,7 @@ rest.prototype.validateVoucher = function(dbentry){
       if(err) reject(err);
       try {
         body = JSON.parse(body);
+        console.log(JSON.stringify(body));
         resolve(body);
       } catch (err){
         console.log(err, body);

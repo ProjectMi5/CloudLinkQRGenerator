@@ -29,18 +29,18 @@ generateQRCode = function(ordercount, input) {
         ID = randomID();
         neworder = "recipe=" + input.recipeId + "&" + "parameters=" + "[" + input.parameters + "]" + "&" + "ID=" + ID;
         neworder_md5 = md5(neworder);
-        qrinput = config.qr.url + neworder_md5;
+        qrinput = config.qr.url + neworder_md5 + '/' + input.recipeId;
         codename = "order" + i + "recipe" + input.recipeId;
         fullpath = targetdirectory + codename;
         dbentry = {
             identifier: neworder_md5,
-            recipe: input.recipeId,
-            parameters: input.parameters,
-            valid: true,
-            humanReadable: ID
+            recipeId: input.recipeId,
+            marketPlaceId: input.marketPlaceId,
+            parameters: JSON.stringify(input.parameters)
         };
 
         rest.validateVoucher(dbentry);
+        console.log(qrinput);
         try{
             encoder.encode(qrinput, fullpath, options = {dot_size: 5});
         } catch (err){
